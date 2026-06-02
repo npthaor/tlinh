@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Nguyễn Trang Linh</title>
-    <!-- Sử dụng font Quicksand & Nunito cho sự hiện đại, trẻ trung -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-body: #eef8ff;
+            --bg-gradient-1: #eef8ff;
+            --bg-gradient-2: #ffffff;
+            --bg-gradient-3: #e1f5fe;
             --card-bg: #ffffff;
-            --primary-blue: #0277bd; /* Xanh đậm cho tiêu đề */
-            --accent-blue: #0288d1; /* Xanh khối Kinh nghiệm */
+            --primary-blue: #0277bd;
+            --accent-blue: #0288d1;
             --light-blue: #e1f5fe;
             --text-dark: #334155;
             --text-muted: #64748b;
@@ -24,16 +25,24 @@
             box-sizing: border-box;
         }
 
+        /* Thêm hiệu ứng nền chuyển màu mượt mà */
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: var(--bg-body);
-            background-image: radial-gradient(circle at top left, #ffffff 0%, #eef8ff 100%);
+            background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3));
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             padding: 50px 20px;
             line-height: 1.6;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         h1, h2, h3, .badge {
@@ -54,34 +63,22 @@
             background: var(--card-bg);
             border-radius: 24px;
             padding: 35px;
-            box-shadow: 0 10px 30px rgba(2, 119, 189, 0.05);
-            border: 1px solid rgba(2, 119, 189, 0.1);
+            box-shadow: 0 8px 25px rgba(2, 119, 189, 0.04);
+            border: 1px solid rgba(2, 119, 189, 0.08);
             position: relative;
-            overflow: hidden;
             transition: var(--transition);
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        /* Hiệu ứng lướt sáng (Shine Effect) */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -150%;
-            width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            transform: skewX(-20deg);
-            transition: 0.7s;
             z-index: 1;
-            pointer-events: none;
         }
 
-        .card:hover::before { left: 150%; }
+        /* Hiệu ứng Glow & Lift mới (Thay cho tráng gương) */
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(2, 119, 189, 0.12);
-            border-color: #81d4fa;
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(2, 119, 189, 0.15);
+            border-color: rgba(2, 119, 189, 0.3);
+            z-index: 2;
         }
 
         .card-content { position: relative; z-index: 2; }
@@ -99,11 +96,18 @@
         /* --- 1. GIỚI THIỆU + AVATAR (Chiếm 2 cột) --- */
         .card-intro {
             grid-column: span 2;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e1f5fe 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
             border: 1px solid #b3e5fc;
             flex-direction: row;
             align-items: center;
             gap: 30px;
+        }
+
+        /* Hiệu ứng nhịp đập (Pulse) cho Avatar */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(2, 119, 189, 0.3); }
+            70% { box-shadow: 0 0 0 15px rgba(2, 119, 189, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(2, 119, 189, 0); }
         }
 
         .profile-avatar {
@@ -111,14 +115,15 @@
             height: 160px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #ffffff;
+            border: 4px solid #ffffff;
             box-shadow: 0 10px 25px rgba(2, 119, 189, 0.2);
-            z-index: 2;
             transition: var(--transition);
+            animation: pulse 2.5s infinite;
         }
 
         .card-intro:hover .profile-avatar {
-            transform: scale(1.05) rotate(3deg);
+            transform: scale(1.08) rotate(5deg);
+            animation: none; /* Dừng nhịp đập khi hover để tập trung vào hiệu ứng xoay */
         }
 
         .intro-title {
@@ -144,33 +149,41 @@
 
         .badge-group {
             display: flex;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: var(--transition);
+            cursor: pointer;
         }
 
-        .badge-group:hover { transform: translateY(-3px); }
+        .badge-group:hover { 
+            transform: translateY(-4px) scale(1.05); 
+            box-shadow: 0 8px 18px rgba(2, 119, 189, 0.25);
+        }
 
         .badge-icon {
             background: #475569;
             color: white;
-            padding: 6px 12px;
+            padding: 8px 12px;
             font-weight: 700;
             font-size: 12px;
+            display: flex;
+            align-items: center;
         }
 
         .badge-text {
             background: var(--accent-blue);
             color: white;
-            padding: 6px 15px;
+            padding: 8px 15px;
             font-weight: 700;
             font-size: 12px;
+            display: flex;
+            align-items: center;
         }
 
         /* --- 2. HỌC VẤN (Chiếm 1 cột) --- */
         .card-edu { grid-column: span 1; }
-        .edu-item { margin-bottom: 20px; }
+        .edu-item { margin-bottom: 20px; position: relative; padding-left: 15px; border-left: 3px solid var(--accent-blue); }
         .edu-item:last-child { margin-bottom: 0; }
         .edu-school { font-weight: 800; color: var(--text-dark); font-size: 15px; margin-bottom: 3px; }
         .edu-major { font-size: 14px; color: var(--text-muted); }
@@ -178,7 +191,7 @@
         /* --- 3. KINH NGHIỆM (Chiếm 2 cột) --- */
         .card-exp {
             grid-column: span 2;
-            background: var(--accent-blue);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
             color: white;
             border: none;
         }
@@ -187,15 +200,22 @@
         .card-exp ul { margin-left: 20px; margin-bottom: 15px; }
         .card-exp li { margin-bottom: 8px; font-size: 15px; }
         .card-exp .highlight {
-            font-weight: 700; color: #ffeb3b; 
-            background: rgba(0,0,0,0.1);
-            padding: 5px 10px; border-radius: 6px;
+            font-weight: 700; color: #fffde7; 
+            background: rgba(255,255,255,0.15);
+            padding: 8px 12px; border-radius: 8px;
             display: inline-block;
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         /* --- 4. NGOẠI NGỮ (Chiếm 1 cột) --- */
         .card-lang { text-align: center; grid-column: span 1; }
-        .ielts-score { font-size: 28px; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
+        .ielts-score { 
+            font-size: 32px; 
+            font-weight: 800; 
+            color: var(--primary-blue); 
+            margin-bottom: 10px; 
+            text-shadow: 2px 2px 0px rgba(2, 119, 189, 0.1);
+        }
         .lang-text { font-size: 14px; color: var(--text-muted); font-weight: 600; line-height: 1.8; }
 
         /* --- 5. HOẠT ĐỘNG SỰ KIỆN (Chiếm 2 cột) --- */
@@ -205,22 +225,35 @@
             grid-template-columns: 1fr 1fr;
             gap: 30px;
         }
-        .act-group { margin-bottom: 20px; }
+        .act-group { margin-bottom: 20px; transition: var(--transition); padding: 10px; border-radius: 12px;}
+        .act-group:hover { background: var(--light-blue); }
         .act-group:last-child { margin-bottom: 0; }
-        .act-title { font-weight: 800; color: var(--text-dark); margin-bottom: 8px; font-size: 15px; }
+        .act-title { font-weight: 800; color: var(--primary-blue); margin-bottom: 8px; font-size: 15px; }
         .act-list { margin-left: 20px; color: var(--text-muted); font-size: 14px; }
         .act-list li { margin-bottom: 5px; }
 
         /* --- 6. SKILLS (Chiếm 1 cột) --- */
         .card-skill { grid-column: span 1; text-align: center;}
         .skill-list { list-style: none; font-size: 15px; font-weight: 600; color: var(--text-muted); margin-top: 15px;}
-        .skill-list li { margin-bottom: 12px; }
+        .skill-list li { 
+            margin-bottom: 12px; 
+            background: var(--light-blue); 
+            padding: 8px 15px; 
+            border-radius: 20px;
+            transition: var(--transition);
+            color: var(--primary-blue);
+        }
+        .skill-list li:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateX(5px);
+        }
 
         /* --- 7. QUOTE & FOOTER (Chiếm 3 cột) --- */
         .quote-box {
             grid-column: span 3;
             text-align: center;
-            padding: 30px 20px;
+            padding: 20px;
         }
 
         .quote-text {
@@ -229,35 +262,42 @@
             color: var(--text-dark);
             font-weight: 600;
             max-width: 800px;
-            margin: 0 auto 15px;
+            margin: 0 auto;
             line-height: 1.8;
-            border: 1px solid rgba(2, 119, 189, 0.15);
+            border: 1px dashed rgba(2, 119, 189, 0.3);
             background: var(--card-bg);
             padding: 30px;
             border-radius: 16px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            transition: var(--transition);
+        }
+        
+        .quote-text:hover {
+            border-color: var(--primary-blue);
+            transform: scale(1.02);
         }
 
-        .quote-author { color: var(--primary-blue); font-weight: 700; }
+        .quote-author { color: var(--primary-blue); font-weight: 800; letter-spacing: 1px;}
 
         .footer {
             grid-column: span 3;
             text-align: center;
             font-size: 13px;
+            margin-top: -10px;
         }
 
         /* --- HIỆU ỨNG XUẤT HIỆN --- */
         .fade-up {
             opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUpAnim 0.8s ease forwards;
+            transform: translateY(40px);
+            animation: fadeUpAnim 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
         }
 
         @keyframes fadeUpAnim {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Delay cho từng ô */
+        /* Delay cho từng ô để tạo hiệu ứng lượn sóng */
         .d-1 { animation-delay: 0.1s; }
         .d-2 { animation-delay: 0.2s; }
         .d-3 { animation-delay: 0.3s; }
@@ -271,8 +311,8 @@
             .bento-grid { grid-template-columns: 1fr; }
             .card-intro, .card-exp, .card-edu, .card-activities, .card-lang, .card-skill, .quote-box, .footer { grid-column: span 1; }
             .card-intro { flex-direction: column; text-align: center; }
-            .profile-avatar { margin-bottom: 20px; }
-            .activities-inner { grid-template-columns: 1fr; gap: 20px; }
+            .profile-avatar { margin-bottom: 10px; }
+            .activities-inner { grid-template-columns: 1fr; gap: 10px; }
             .contact-badges { justify-content: center; }
         }
     </style>
@@ -281,10 +321,8 @@
 
     <div class="bento-grid">
         
-        <!-- HÀNG 1: GIỚI THIỆU (2 cột) + HỌC VẤN (1 cột) -->
         <div class="card card-intro fade-up d-1">
-            <!-- Ảnh đại diện -->
-            <img src="avatar.jpg" alt="Nguyễn Trang Linh" class="profile-avatar">
+            <img src="https://ui-avatars.com/api/?name=Trang+Linh&background=0288d1&color=fff&size=160&font-size=0.4" alt="Nguyễn Trang Linh" class="profile-avatar">
             
             <div class="card-content">
                 <h1 class="intro-title">👋 Xin chào, mình là Nguyễn Trang Linh</h1>
@@ -297,7 +335,7 @@
                         <span class="badge-text">LUCI.TRANGLINH@GMAIL.COM</span>
                     </div>
                     <div class="badge-group">
-                        <span class="badge-icon" style="background: #5b4636;">f FACEBOOK</span>
+                        <span class="badge-icon" style="background: #3b5998;">f FACEBOOK</span>
                         <span class="badge-text" style="background: #1877f2;">TRANG LINH</span>
                     </div>
                 </div>
@@ -308,17 +346,16 @@
             <div class="card-content">
                 <h2 class="card-title">🎓 Học Vấn</h2>
                 <div class="edu-item">
-                    <div class="edu-school">🏫 Đại học Ngoại Thương</div>
+                    <div class="edu-school">Đại học Ngoại Thương</div>
                     <div class="edu-major">K63 Kinh doanh Quốc Tế (CLC)</div>
                 </div>
-                <div class="edu-item" style="margin-top: 25px;">
-                    <div class="edu-school">🏫 Chuyên KHXH&NV - ĐHQGHN</div>
+                <div class="edu-item" style="margin-top: 20px;">
+                    <div class="edu-school">Chuyên KHXH&NV - ĐHQGHN</div>
                     <div class="edu-major">K2 Chuyên Địa</div>
                 </div>
             </div>
         </div>
 
-        <!-- HÀNG 2: KINH NGHIỆM (2 cột) + NGOẠI NGỮ (1 cột) -->
         <div class="card card-exp fade-up d-3">
             <div class="card-content">
                 <h2 class="card-title">💼 Thực tập sinh phòng Kinh Doanh | PCS Corp</h2>
@@ -335,30 +372,26 @@
                 <div class="ielts-score">GB IELTS 7.0</div>
                 <div class="lang-text">
                     Thành thạo 3 ngôn ngữ:<br>
-                    <span style="color: var(--primary-blue); font-size: 16px;">Tiếng Việt 🇻🇳 • Tiếng Anh 🇬🇧 • Tiếng Hàn 🇰🇷</span>
+                    <span style="color: var(--primary-blue); font-size: 16px; display: inline-block; margin-top: 5px;">Tiếng Việt 🇻🇳 • Tiếng Anh 🇬🇧 • Tiếng Hàn 🇰🇷</span>
                 </div>
             </div>
         </div>
 
-        <!-- HÀNG 3: HOẠT ĐỘNG (2 cột) + KỸ NĂNG (1 cột) -->
         <div class="card card-activities fade-up d-5">
             <div class="card-content">
-                <h2 class="card-title">🎪 Hoạt Động & Điều Phối Sự Kiện</h2>
+                <h2 class="card-title">🎪 Hoạt Động & Sự Kiện</h2>
                 <div class="activities-inner">
-                    <!-- Cột trái -->
                     <div>
                         <div class="act-group">
                             <div class="act-title">✨ FTU Forum | Ban Tổ Chức</div>
-                            <div class="edu-major" style="margin-bottom: 5px;">Điều phối chuỗi sự kiện lớn năm 2025:</div>
+                            <div class="edu-major" style="margin-bottom: 5px;">Điều phối sự kiện năm 2025:</div>
                             <ul class="act-list">
                                 <li>Mùa Gió Ấm lần thứ 16 & Bách Khoa Open Day</li>
                                 <li>Ngày Hội Tuyển Sinh & Webinar Tư Vấn 2025</li>
                                 <li>FTU Forum's 19th Anniversary - Sonoria</li>
-                                <li>Talkshow: From Zero to Hero</li>
                             </ul>
                         </div>
                     </div>
-                    <!-- Cột phải -->
                     <div>
                         <div class="act-group">
                             <div class="act-title">🏀 Dự án Ngăn Bàn | Ban Tài Chính</div>
@@ -367,10 +400,10 @@
                                 <li>Tổ chức giải đấu bóng rổ <strong>Balling Jam 3x3</strong>.</li>
                             </ul>
                         </div>
-                        <div class="act-group" style="margin-top: 15px;">
+                        <div class="act-group" style="margin-top: 10px;">
                             <div class="act-title">⚽ NVFC - HSSH Football Club</div>
                             <ul class="act-list" style="list-style-type: disc;">
-                                <li>Vai trò: <strong>Manager</strong> (Quản lý CLB bóng đá).</li>
+                                <li>Vai trò: <strong>Manager</strong> (Quản lý CLB).</li>
                             </ul>
                         </div>
                     </div>
@@ -384,12 +417,11 @@
                 <ul class="skill-list">
                     <li>💻 MS Word & Excel</li>
                     <li>🤝 Teamwork & Event Planning</li>
-                    <li>⚡ Nhanh nhẹn, Tinh tế, Ham học hỏi</li>
+                    <li>⚡ Nhanh nhẹn, Tinh tế</li>
                 </ul>
             </div>
         </div>
 
-        <!-- QUOTE & FOOTER -->
         <div class="quote-box fade-up d-7">
             <div class="quote-text">
                 "A man provided with paper, pencil, and rubber, and subject to strict discipline, is in effect a universal machine."
