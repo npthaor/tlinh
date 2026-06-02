@@ -1,138 +1,405 @@
-<div align="center">
-  <!-- Banner động Teal & Pastel Blue đồng bộ với màu gốc của cậu -->
-  <img src="https://capsule-render.vercel.app/render?type=waving&color=b3e5fc&height=180&section=header&text=Welcome%20to%20Linh's%20Space%20✨&fontSize=32&fontColor=0284c7" width="100%" alt="Header Banner" />
-</div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nguyễn Trang Linh</title>
+    <!-- Sử dụng font Quicksand & Nunito cho sự hiện đại, trẻ trung -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #eef8ff;
+            --card-bg: #ffffff;
+            --primary-blue: #0277bd; /* Xanh đậm cho tiêu đề */
+            --accent-blue: #0288d1; /* Xanh khối Kinh nghiệm */
+            --light-blue: #e1f5fe;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-<br />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Bố cục Bento Grid nâng cấp bằng Table tàng hình (Đảm bảo hiển thị hoàn hảo trên GitHub) -->
-<table border="0" cellpadding="15" cellspacing="10" width="100%">
-  
-  <!-- HÀNG 1: PROFILE CHÍNH -->
-  <tr>
-    <td colspan="3" bgcolor="#e0f2fe" style="border-radius: 24px; padding: 35px; border: 1px solid #bae6fd;">
-      <font size="6" color="#0284c7"><b>👋 Xin chào, mình là Nguyễn Trang Linh</b></font>
-      <br /><br />
-      <font size="4" color="#334155">
-        Hiện tại mình là sinh viên khóa <b>K63 hệ Chất Lượng Cao - Ngành Kinh doanh Quốc Tế tại Trường Đại học Ngoại Thương (FTU)</b>. Một người hướng ngoại, nhanh nhẹn, tinh tế và luôn tràn đầy năng lượng sáng tạo trong công việc cũng như kết nối cộng đồng. 🌟
-      </font>
-      <br /><br />
-      <!-- Bộ nút liên hệ tích hợp thông tin từ CV -->
-      <a href="mailto:luci.tranglinh@gmail.com">
-        <img src="https://img.shields.io/badge/Gmail-luci.tranglinh@gmail.com-0284c7?style=for-the-badge&logo=gmail&logoColor=white" />
-      </a>
-      <a href="https://www.facebook.com/tranglinh.nguyen.9081/" target="_blank">
-        <img src="https://img.shields.io/badge/Facebook-Trang%20Linh-1877F2?style=for-the-badge&logo=facebook&logoColor=white" />
-      </a>
-    </td>
-  </tr>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at top left, #ffffff 0%, #eef8ff 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
+            line-height: 1.6;
+        }
 
-  <!-- HÀNG 2: KINH NGHIỆM THỰC TẬP & HỌC VẤN -->
-  <tr>
-    <!-- Khối Thực tập sinh PCS -->
-    <td width="65%" colspan="2" bgcolor="#0284c7" style="border-radius: 24px; padding: 25px;" valign="top">
-      <font size="5" color="#ffffff"><b>💼 Thực tập sinh phòng Kinh Doanh | PCS Corp</b></font>
-      <br /><br />
-      <font size="3" color="#f0f9ff">
-        • Phát triển mạng lưới khách hàng mới qua nhiều kênh (LinkedIn, Facebook, Email Marketing).<br />
-        • Phân tích nhu cầu, tối ưu hóa chiến lược tiếp cận và nâng cao trải nghiệm sau mua.<br />
-        🔥 <b>Thành tựu:</b> Được Ban Giám Đốc đánh giá <b>"Rất Tốt" (9/10 điểm)</b>.
-      </font>
-    </td>
-    
-    <!-- Khối Học vấn nền tảng -->
-    <td width="35%" bgcolor="#ffffff" style="border-radius: 24px; padding: 25px; border: 2px solid #bae6fd;" valign="top">
-      <font size="4" color="#0284c7"><b>🎓 Học Vấn</b></font>
-      <br /><br />
-      <font size="3" color="#334155">
-        🏫 <b>Đại học Ngoại Thương</b><br />
-        <small>K63 Kinh doanh Quốc Tế (CLC)</small><br /><br />
-        🏫 <b>Chuyên KHXH&NV - ĐHQGHN</b><br />
-        <small>K2 Chuyên Địa</small>
-      </font>
-    </td>
-  </tr>
+        h1, h2, h3, .badge {
+            font-family: 'Quicksand', sans-serif;
+        }
 
-  <!-- HÀNG 3: HOẠT ĐỘNG NGOẠI KHÓA HOÀNH TRÁNG -->
-  <tr>
-    <!-- Khối FTU Forum & Project Manager -->
-    <td width="100%" colspan="3" bgcolor="#ffffff" style="border-radius: 24px; padding: 30px; border: 2px solid #bae6fd;" valign="top">
-      <font size="5" color="#0284c7"><b>🎪 Hoạt Động & Điều Phối Sự Kiện</b></font>
-      <br /><br />
-      <table border="0" cellpadding="0" cellspacing="0" width="100%">
-        <tr>
-          <td width="50%" valign="top">
-            <font size="4" color="#334155"><b>✨ FTU Forum | Ban Tổ Chức</b></font>
-            <font size="2" color="#64748b"><br />Điều phối chuỗi sự kiện lớn năm 2025:</font>
-            <br />
-            <font size="3" color="#334155">
-              • Mùa Gió Ấm lần thứ 16 & Bách Khoa Open Day<br />
-              • Ngày Hội Tuyển Sinh & Webinar Tư Vấn 2025<br />
-              • FTU Forum's 19th Anniversary - Sonoria<br />
-              • Talkshow: From Zero to Hero
-            </font>
-          </td>
-          <td width="50%" valign="top">
-            <font size="4" color="#334155"><b>🏀 Dự án Ngăn Bàn | Ban Tài Chính</b></font>
-            <br />
-            <font size="3" color="#334155">
-              • Dự án phi lợi nhuận về Sức khỏe - Thể thao.<br />
-              • Tổ chức giải đấu bóng rổ <b>Balling Jam 3x3</b> dành cho học sinh THPT.
-            </font>
-            <br /><br />
-            <font size="4" color="#334155"><b>⚽ NVFC - HSSH Football Club</b></font>
-            <br />
-            <font size="3" color="#334155">
-              • Vai trò: <b>Manager</b> (Quản lý câu lạc bộ bóng đá).
-            </font>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+        /* --- BENTO GRID LAYOUT --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            width: 100%;
+        }
 
-  <!-- HÀNG 4: KỸ NĂNG, CHỨNG CHỈ & ĐIỂM MẠNH -->
-  <tr>
-    <!-- Khối Ngôn ngữ & Chứng chỉ -->
-    <td width="33%" bgcolor="#e0f2fe" style="border-radius: 24px; padding: 25px; border: 1px solid #bae6fd; text-align: center;" valign="middle">
-      <font size="5"><b>🇬🇧 IELTS 7.0</b></font>
-      <br /><br />
-      <font size="3" color="#334155">
-        Thành thạo 3 ngôn ngữ:<br />
-        <b>Tiếng Việt 🇻🇳 • Tiếng Anh 🇬🇧 • Tiếng Hàn 🇰🇷</b>
-      </font>
-    </td>
+        /* --- STYLING CHUNG CHO CARD --- */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(2, 119, 189, 0.05);
+            border: 1px solid rgba(2, 119, 189, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
 
-    <!-- Khối Kỹ năng tin học & Soft-skills -->
-    <td width="33%" bgcolor="#ffffff" style="border-radius: 24px; padding: 25px; border: 2px solid #bae6fd; text-align: center;" valign="middle">
-      <font size="5" color="#0284c7"><b>🛠️ Skills & Strengths</b></font>
-      <br /><br />
-      <font size="3" color="#334155">
-        💻 MS Word & Excel<br />
-        🤝 Teamwork & Event Planning<br />
-        ⚡ Nhanh nhẹn, Tinh tế, Ham học hỏi
-      </font>
-    </td>
+        /* Hiệu ứng lướt sáng (Shine Effect) */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-20deg);
+            transition: 0.7s;
+            z-index: 1;
+            pointer-events: none;
+        }
 
-    <!-- Khối GitHub Stats thời thượng -->
-    <td width="34%" bgcolor="#e0f2fe" style="border-radius: 24px; padding: 20px; text-align: center;" valign="middle">
-      <!-- Thay 'YOUR_GITHUB_USERNAME' bằng username thật của cậu nhé -->
-      <img src="https://github-readme-stats.vercel.app/api?username=YOUR_GITHUB_USERNAME&show_icons=true&theme=oceanical&hide_border=true&bg_color=e0f2fe&title_color=0284c7&text_color=334155&icon_color=0284c7" width="100%" alt="GitHub Stats" />
-    </td>
-  </tr>
+        .card:hover::before { left: 150%; }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(2, 119, 189, 0.12);
+            border-color: #81d4fa;
+        }
 
-</table>
+        .card-content { position: relative; z-index: 2; }
 
-<br />
-<hr style="border: 1px dashed #bae6fd;" />
-<br />
+        .card-title {
+            color: var(--primary-blue);
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-<!-- Phần chân trang tích hợp bộ đếm và danh ngôn ngẫu nhiên -->
-<div align="center">
-  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=oceanical" alt="Quote" />
-  <br /><br />
-  <!-- Thay 'YOUR_GITHUB_USERNAME' ở link dưới đây nữa nha -->
-  <img src="https://komarev.com/ghpvc/?username=YOUR_GITHUB_USERNAME&color=0284c7&style=flat-square&label=PROFILE%20VIEWS" alt="Views" />
-  <br />
-  <font size="2" color="#64748b"><i>Made with 🌸 by Nguyen Trang Linh</i></font>
-</div>
+        /* --- 1. GIỚI THIỆU (Chiếm 3 cột) --- */
+        .card-intro {
+            grid-column: span 3;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e1f5fe 100%);
+            border: 1px solid #b3e5fc;
+        }
+
+        .intro-title {
+            font-size: 32px;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .intro-desc {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .contact-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge-group {
+            display: flex;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .badge-group:hover { transform: translateY(-3px); }
+
+        .badge-icon {
+            background: #475569;
+            color: white;
+            padding: 8px 15px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .badge-text {
+            background: var(--accent-blue);
+            color: white;
+            padding: 8px 20px;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        /* --- 2. KINH NGHIỆM (Chiếm 2 cột) --- */
+        .card-exp {
+            grid-column: span 2;
+            background: var(--accent-blue);
+            color: white;
+            border: none;
+        }
+
+        .card-exp .card-title { color: white; }
+        .card-exp ul { margin-left: 20px; margin-bottom: 15px; }
+        .card-exp li { margin-bottom: 8px; font-size: 15px; }
+        .card-exp .highlight {
+            font-weight: 700; color: #ffeb3b; 
+            background: rgba(0,0,0,0.1);
+            padding: 5px 10px; border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* --- 3. HỌC VẤN (Chiếm 1 cột) --- */
+        .card-edu { grid-column: span 1; }
+        .edu-item { margin-bottom: 20px; }
+        .edu-item:last-child { margin-bottom: 0; }
+        .edu-school { font-weight: 800; color: var(--text-dark); font-size: 15px; margin-bottom: 3px; }
+        .edu-major { font-size: 14px; color: var(--text-muted); }
+
+        /* --- 4. HOẠT ĐỘNG SỰ KIỆN (Chiếm 3 cột, chia 2 cột nhỏ bên trong) --- */
+        .card-activities { grid-column: span 3; }
+        .activities-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .act-group { margin-bottom: 25px; }
+        .act-group:last-child { margin-bottom: 0; }
+        .act-title { font-weight: 800; color: var(--text-dark); margin-bottom: 10px; font-size: 16px; }
+        .act-list { margin-left: 20px; color: var(--text-muted); font-size: 15px; }
+        .act-list li { margin-bottom: 5px; }
+
+        /* --- 5. NGOẠI NGỮ, SKILLS, GITHUB (Mỗi ô 1 cột) --- */
+        .card-box { text-align: center; display: flex; flex-direction: column; justify-content: center; }
+        
+        .ielts-score { font-size: 28px; font-weight: 800; color: var(--text-dark); margin-bottom: 10px; }
+        .lang-text { font-size: 14px; color: var(--text-muted); font-weight: 600; line-height: 1.8; }
+        
+        .skill-list { list-style: none; font-size: 15px; font-weight: 600; color: var(--text-muted); }
+        .skill-list li { margin-bottom: 12px; }
+
+        .github-placeholder {
+            border: 1px dashed #b3e5fc;
+            background: #f0f9ff;
+            padding: 20px; border-radius: 12px;
+            color: var(--primary-blue); font-weight: 700;
+        }
+
+        /* --- 6. QUOTE & FOOTER --- */
+        .quote-box {
+            grid-column: span 3;
+            text-align: center;
+            padding: 40px;
+            margin-top: 10px;
+        }
+
+        .quote-text {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text-dark);
+            font-weight: 600;
+            max-width: 800px;
+            margin: 0 auto 15px;
+            line-height: 1.8;
+            border: 1px solid rgba(2, 119, 189, 0.15);
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        .quote-author { color: var(--primary-blue); font-weight: 700; }
+
+        .footer {
+            grid-column: span 3;
+            text-align: center;
+            font-size: 13px;
+        }
+        
+        .error-badge {
+            background: #d9534f; color: white;
+            padding: 4px 10px; border-radius: 4px;
+            display: inline-block; margin-bottom: 10px;
+        }
+
+        /* --- HIỆU ỨNG XUẤT HIỆN --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpAnim 0.8s ease forwards;
+        }
+
+        @keyframes fadeUpAnim {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Delay cho từng ô */
+        .d-1 { animation-delay: 0.1s; }
+        .d-2 { animation-delay: 0.2s; }
+        .d-3 { animation-delay: 0.3s; }
+        .d-4 { animation-delay: 0.4s; }
+        .d-5 { animation-delay: 0.5s; }
+        .d-6 { animation-delay: 0.6s; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-intro, .card-exp, .card-edu, .card-activities, .quote-box, .footer { grid-column: span 1; }
+            .activities-inner { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bento-grid">
+        
+        <!-- 1. GIỚI THIỆU -->
+        <div class="card card-intro fade-up d-1">
+            <div class="card-content">
+                <h1 class="intro-title">👋 Xin chào, mình là Nguyễn Trang Linh</h1>
+                <p class="intro-desc">
+                    Hiện tại mình là sinh viên khóa <strong>K63 hệ Chất Lượng Cao - Ngành Kinh doanh Quốc Tế</strong> tại <strong>Trường Đại học Ngoại Thương (FTU)</strong>. Một người hướng ngoại, nhanh nhẹn, tinh tế và luôn tràn đầy năng lượng sáng tạo trong công việc cũng như kết nối cộng đồng. 🌟
+                </p>
+                <div class="contact-badges">
+                    <div class="badge-group">
+                        <span class="badge-icon">M GMAIL</span>
+                        <span class="badge-text">LUCI.TRANGLINH@GMAIL.COM</span>
+                    </div>
+                    <div class="badge-group">
+                        <span class="badge-icon" style="background: #5b4636;">f FACEBOOK</span>
+                        <span class="badge-text" style="background: #1877f2;">TRANG LINH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. KINH NGHIỆM -->
+        <div class="card card-exp fade-up d-2">
+            <div class="card-content">
+                <h2 class="card-title">💼 Thực tập sinh phòng Kinh Doanh | PCS Corp</h2>
+                <ul>
+                    <li>Phát triển mạng lưới khách hàng mới qua nhiều kênh (LinkedIn, Facebook, Email Marketing).</li>
+                    <li>Phân tích nhu cầu, tối ưu hóa chiến lược tiếp cận và nâng cao trải nghiệm sau mua.</li>
+                </ul>
+                <div class="highlight">🔥 Thành tựu: Được Ban Giám Đốc đánh giá "Rất Tốt" (9/10 điểm).</div>
+            </div>
+        </div>
+
+        <!-- 3. HỌC VẤN -->
+        <div class="card card-edu fade-up d-3">
+            <div class="card-content">
+                <h2 class="card-title">🎓 Học Vấn</h2>
+                <div class="edu-item">
+                    <div class="edu-school">🏫 Đại học Ngoại Thương</div>
+                    <div class="edu-major">K63 Kinh doanh Quốc Tế (CLC)</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-school">🏫 Chuyên KHXH&NV - ĐHQGHN</div>
+                    <div class="edu-major">K2 Chuyên Địa</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. HOẠT ĐỘNG -->
+        <div class="card card-activities fade-up d-4">
+            <div class="card-content">
+                <h2 class="card-title">🎪 Hoạt Động & Điều Phối Sự Kiện</h2>
+                <div class="activities-inner">
+                    <!-- Cột trái -->
+                    <div>
+                        <div class="act-group">
+                            <div class="act-title">✨ FTU Forum | Ban Tổ Chức</div>
+                            <div class="edu-major" style="margin-bottom: 5px;">Điều phối chuỗi sự kiện lớn năm 2025:</div>
+                            <ul class="act-list">
+                                <li>Mùa Gió Ấm lần thứ 16 & Bách Khoa Open Day</li>
+                                <li>Ngày Hội Tuyển Sinh & Webinar Tư Vấn 2025</li>
+                                <li>FTU Forum's 19th Anniversary - Sonoria</li>
+                                <li>Talkshow: From Zero to Hero</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Cột phải -->
+                    <div>
+                        <div class="act-group">
+                            <div class="act-title">🏀 Dự án Ngăn Bàn | Ban Tài Chính</div>
+                            <ul class="act-list" style="list-style-type: disc;">
+                                <li>Dự án phi lợi nhuận về Sức khỏe - Thể thao.</li>
+                                <li>Tổ chức giải đấu bóng rổ <strong>Balling Jam 3x3</strong> dành cho học sinh THPT.</li>
+                            </ul>
+                        </div>
+                        <div class="act-group">
+                            <div class="act-title">⚽ NVFC - HSSH Football Club</div>
+                            <ul class="act-list" style="list-style-type: disc;">
+                                <li>Vai trò: <strong>Manager</strong> (Quản lý câu lạc bộ bóng đá).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. NGÔN NGỮ -->
+        <div class="card card-box fade-up d-5">
+            <div class="card-content">
+                <div class="ielts-score">GB IELTS 7.0</div>
+                <div class="lang-text">
+                    Thành thạo 3 ngôn ngữ:<br>
+                    <strong>Tiếng Việt 🇻🇳 • Tiếng Anh 🇬🇧 • Tiếng Hàn 🇰🇷</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. KỸ NĂNG -->
+        <div class="card card-box fade-up d-5">
+            <div class="card-content">
+                <h2 class="card-title" style="justify-content: center;">🛠 Skills & Strengths</h2>
+                <ul class="skill-list">
+                    <li>💻 MS Word & Excel</li>
+                    <li>🤝 Teamwork & Event Planning</li>
+                    <li>⚡ Nhanh nhẹn, Tinh tế, Ham học hỏi</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7. GITHUB STATS -->
+        <div class="card card-box fade-up d-5">
+            <div class="card-content">
+                <div class="github-placeholder">
+                    🖼️ GitHub Stats
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. QUOTE & FOOTER -->
+        <div class="quote-box fade-up d-6">
+            <div class="quote-text">
+                "A man provided with paper, pencil, and rubber, and subject to strict discipline, is in effect a universal machine."
+                <div class="quote-author" style="margin-top: 15px;">- Alan Turing</div>
+            </div>
+        </div>
+
+        <div class="footer fade-up d-6">
+            <div class="error-badge">PROFILE VIEWS Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.</div>
+            <div style="color: var(--text-muted); font-style: italic;">Made with 🌸 by Nguyen Trang Linh</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
