@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Nguyễn Trang Linh</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Tone xanh nước biển hiện đại & thoáng */
-            --bg-light: #f0f9ff;
-            --bg-mid: #e0f2fe;
-            --bg-dark: #bae6fd;
-            --primary-blue: #0284c7;
-            --accent-blue: #0ea5e9;
-            --text-main: #0f172a;
+            /* Tone màu xanh biển chủ đạo */
+            --bg-gradient-start: #e8f4f8;
+            --bg-gradient-end: #dcf2fa;
+            --primary-blue: #0277bd;
+            --accent-blue: #0288d1;
+            --text-main: #1e293b;
             --text-muted: #475569;
-            --white-glass: rgba(255, 255, 255, 0.65);
-            --white-glass-hover: rgba(255, 255, 255, 0.9);
-            --transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 1);
+            --transition: all 0.4s ease;
         }
 
         * {
@@ -28,355 +27,362 @@
 
         body {
             font-family: 'Nunito', sans-serif;
-            /* Background gradient mesh tạo cảm giác đại dương sáng sủa */
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-mid) 50%, var(--bg-dark) 100%);
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
             background-attachment: fixed;
             color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 20px;
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .badge, .title-font {
+        h1, h2, h3, .title-font {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* --- HERO SECTION (PHẦN ĐẦU CÙNG) --- */
+        /* --- LAYOUT CHÍNH (THOÁNG & CÓ KHOẢNG TRỐNG) --- */
+        .portfolio-wrapper {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 80px 20px; /* Cách đỉnh và đáy một khoảng lớn */
+            display: flex;
+            flex-direction: column;
+            gap: 60px; /* Khoảng cách lớn giữa các phần để không bị dồn */
+        }
+
+        /* --- HERO SECTION --- */
         .hero-section {
             text-align: center;
-            max-width: 800px;
-            margin-bottom: 60px;
-            z-index: 2;
+            padding-bottom: 20px;
         }
 
-        .avatar-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 25px;
-        }
-
-        .hero-avatar {
+        .avatar {
             width: 180px;
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid white;
-            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.2);
+            border: 6px solid #fff;
+            box-shadow: 0 15px 35px rgba(2, 119, 189, 0.15);
+            margin-bottom: 30px;
             transition: var(--transition);
-            position: relative;
-            z-index: 2;
         }
 
-        .hero-avatar:hover {
-            transform: translateY(-10px) scale(1.05) rotate(3deg);
-            box-shadow: 0 30px 50px rgba(2, 132, 199, 0.3);
-        }
-
-        /* Vòng sáng trang trí sau avatar */
-        .avatar-container::before {
-            content: '';
-            position: absolute;
-            top: -10%; left: -10%; right: -10%; bottom: -10%;
-            background: linear-gradient(45deg, var(--accent-blue), #38bdf8);
-            border-radius: 50%;
-            z-index: 1;
-            filter: blur(25px);
-            opacity: 0.5;
-            animation: pulse-glow 3s infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            0% { transform: scale(0.9); opacity: 0.4; }
-            100% { transform: scale(1.1); opacity: 0.7; }
+        .avatar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(2, 119, 189, 0.25);
         }
 
         .hero-name {
-            font-size: 42px;
+            font-size: 46px;
             font-weight: 800;
             color: var(--primary-blue);
             margin-bottom: 15px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
-        .hero-bio {
+        .hero-desc {
             font-size: 18px;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
-        .hero-badges {
+        .contact-group {
             display: flex;
-            gap: 15px;
             justify-content: center;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
-        .badge-pill {
+        .contact-tag {
+            background: #fff;
+            color: var(--primary-blue);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(2, 119, 189, 0.1);
             display: flex;
             align-items: center;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            backdrop-filter: blur(10px);
+            gap: 8px;
             transition: var(--transition);
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        .badge-pill:hover {
-            transform: translateY(-5px);
+        .contact-tag:hover {
             background: var(--primary-blue);
-            color: white;
-            box-shadow: 0 15px 25px rgba(2, 132, 199, 0.25);
+            color: #fff;
+            transform: translateY(-3px);
         }
 
-        /* --- BENTO GRID LAYOUT --- */
-        .bento-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1100px;
-            width: 100%;
-            z-index: 2;
-        }
-
-        /* --- GLASSMORPHISM CARDS --- */
+        /* --- CARD STYLE (GLASSMORPHISM NHẸ NHÀNG) --- */
         .card {
-            background: var(--white-glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 30px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 15px 35px rgba(2, 132, 199, 0.05);
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 45px;
+            box-shadow: 0 15px 30px rgba(2, 119, 189, 0.05);
             transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .card:hover {
-            background: var(--white-glass-hover);
-            transform: translateY(-8px);
-            box-shadow: 0 25px 45px rgba(2, 132, 199, 0.12);
-            border-color: rgba(255,255,255,1);
+            box-shadow: 0 20px 40px rgba(2, 119, 189, 0.1);
         }
 
         .card-title {
             color: var(--primary-blue);
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 800;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Kích thước các ô */
-        .card-edu { grid-column: span 1; }
-        .card-lang { grid-column: span 1; text-align: center; }
-        .card-skill { grid-column: span 1; }
-        
-        .card-exp { 
-            grid-column: span 2; 
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #0369a1 100%);
-            color: white;
-            border: none;
-            box-shadow: 0 20px 40px rgba(2, 132, 199, 0.25);
-        }
-        .card-exp:hover { background: linear-gradient(135deg, #0369a1 0%, var(--primary-blue) 100%); color: white;}
-        .card-exp .card-title { color: white; }
-
-        .card-activities { grid-column: span 3; }
-
-        /* Typography & Lists bên trong Card */
-        .edu-item { margin-bottom: 25px; border-left: 3px solid var(--accent-blue); padding-left: 18px; }
-        .edu-item:last-child { margin-bottom: 0; }
-        .edu-school { font-weight: 800; font-size: 16px; color: var(--text-main); margin-bottom: 5px; }
-        .edu-major { font-size: 14px; color: var(--text-muted); }
-
-        .card-exp ul { margin-left: 20px; margin-bottom: 20px; font-size: 15px; opacity: 0.9;}
-        .card-exp li { margin-bottom: 10px; }
-        .exp-highlight {
-            background: rgba(255,255,255,0.15);
-            padding: 12px 18px;
-            border-radius: 15px;
-            font-weight: 700;
-            display: inline-block;
-            border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .ielts-score { font-size: 42px; font-weight: 800; color: var(--primary-blue); margin-bottom: 10px; font-family: 'Plus Jakarta Sans', sans-serif;}
-        .lang-text { font-size: 15px; color: var(--text-muted); font-weight: 600; }
-        .lang-tags { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-        .lang-tag { background: #e0f2fe; color: var(--primary-blue); padding: 5px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;}
-
-        .skill-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
-        .skill-item { 
-            background: white; 
-            padding: 12px 20px; 
-            border-radius: 15px; 
-            font-weight: 700; 
-            color: var(--primary-blue);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            margin-bottom: 30px;
             display: flex;
             align-items: center;
             gap: 10px;
+            border-bottom: 2px dashed rgba(2, 119, 189, 0.2);
+            padding-bottom: 15px;
         }
 
-        .act-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .act-box { background: rgba(255,255,255,0.5); padding: 25px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.8); }
-        .act-title { font-size: 17px; font-weight: 800; color: var(--primary-blue); margin-bottom: 12px; }
-        .act-box ul { margin-left: 20px; font-size: 14.5px; color: var(--text-muted); }
-        .act-box li { margin-bottom: 8px; }
+        /* --- GRID 2 CỘT (Cho Học vấn & Kỹ năng) --- */
+        .grid-2-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* Chi tiết Học vấn */
+        .edu-item { margin-bottom: 25px; }
+        .edu-item:last-child { margin-bottom: 0; }
+        .edu-school { font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
+        .edu-major { font-size: 15px; color: var(--text-muted); }
+
+        /* Kỹ năng & Ngoại ngữ */
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .tag {
+            background: #e1f5fe;
+            color: var(--primary-blue);
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        
+        .ielts-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        /* --- KINH NGHIỆM CHI TIẾT --- */
+        .exp-role {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+        .exp-company {
+            color: var(--accent-blue);
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        .exp-list {
+            margin-left: 20px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .exp-list li { margin-bottom: 8px; }
+        .achievement {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary-blue);
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        /* --- HOẠT ĐỘNG (GRID TRONG CARD) --- */
+        .act-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .act-item {
+            background: rgba(255,255,255,0.5);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(2, 119, 189, 0.1);
+        }
+        .act-name { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
+        .act-desc { font-size: 14px; color: var(--text-muted); margin-left: 20px; }
+        .act-desc li { margin-bottom: 5px; }
 
         /* --- QUOTE & FOOTER --- */
-        .quote-container {
-            max-width: 800px;
+        .quote-box {
             text-align: center;
-            margin: 60px auto 30px;
-            padding: 40px;
-            position: relative;
+            padding: 20px;
+            margin-top: 20px;
         }
-        .quote-icon { font-size: 40px; color: var(--accent-blue); opacity: 0.3; margin-bottom: 15px; }
-        .quote-text { font-size: 20px; font-style: italic; color: var(--text-main); font-weight: 600; line-height: 1.8; }
-        .quote-author { margin-top: 20px; font-weight: 800; color: var(--primary-blue); text-transform: uppercase; letter-spacing: 2px; font-size: 14px;}
+        .quote-text {
+            font-size: 22px;
+            font-style: italic;
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        .quote-author {
+            margin-top: 15px;
+            font-weight: 800;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+        }
 
-        .footer { text-align: center; color: var(--text-muted); font-size: 14px; font-weight: 600; margin-top: 20px;}
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: -20px;
+        }
 
-        /* --- HIỆU ỨNG ANIMATION --- */
-        .fade-up { opacity: 0; transform: translateY(30px); animation: fadeUpAnim 0.8s ease-out forwards; }
-        @keyframes fadeUpAnim { to { opacity: 1; transform: translateY(0); } }
-        
-        .d-1 { animation-delay: 0.1s; } .d-2 { animation-delay: 0.2s; }
-        .d-3 { animation-delay: 0.3s; } .d-4 { animation-delay: 0.4s; }
-        .d-5 { animation-delay: 0.5s; } .d-6 { animation-delay: 0.6s; }
+        /* --- ANIMATIONS --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .d-1 { animation-delay: 0.1s; }
+        .d-2 { animation-delay: 0.3s; }
+        .d-3 { animation-delay: 0.5s; }
+        .d-4 { animation-delay: 0.7s; }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 900px) {
-            .bento-container { grid-template-columns: 1fr; }
-            .card-edu, .card-lang, .card-skill, .card-exp, .card-activities { grid-column: span 1; }
-            .act-grid { grid-template-columns: 1fr; }
-            .hero-name { font-size: 32px; }
-            .hero-bio { font-size: 16px; }
-            .card { padding: 30px; }
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .grid-2-cols, .act-grid { grid-template-columns: 1fr; gap: 20px; }
+            .hero-name { font-size: 36px; }
+            .card { padding: 30px 20px; }
+            .portfolio-wrapper { gap: 40px; padding: 40px 15px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-section fade-up">
-        <div class="avatar-container">
-            <img src="avatar.png" alt="Nguyễn Trang Linh" class="hero-avatar">
-        </div>
-        <h1 class="hero-name title-font">👋 Xin chào, mình là Trang Linh</h1>
-        <p class="hero-bio">
-            Sinh viên khóa <strong>K63 hệ Chất Lượng Cao - Ngành Kinh doanh Quốc Tế</strong> tại <strong>FTU</strong>.<br>
-            Hướng ngoại, tinh tế và luôn tràn đầy năng lượng sáng tạo! 🌟
-        </p>
-        <div class="hero-badges">
-            <div class="badge-pill">✉️ luci.tranglinh@gmail.com</div>
-            <div class="badge-pill">📘 Facebook: Trang Linh</div>
-        </div>
-    </header>
-
-    <main class="bento-container">
+    <div class="portfolio-wrapper">
         
-        <div class="card card-edu fade-up d-1">
-            <h2 class="card-title title-font">🎓 Học Vấn</h2>
-            <div class="edu-item">
-                <div class="edu-school">Đại học Ngoại Thương (FTU)</div>
-                <div class="edu-major">K63 Kinh doanh Quốc Tế (CLC)</div>
+        <header class="hero-section fade-in d-1">
+            <img src="avatar.png" alt="Nguyễn Trang Linh" class="avatar">
+            <h1 class="hero-name title-font">Nguyễn Trang Linh</h1>
+            <p class="hero-desc">
+                Sinh viên hệ Chất Lượng Cao ngành Kinh doanh Quốc Tế tại <strong>Đại học Ngoại Thương (FTU)</strong>. Hướng ngoại, nhanh nhẹn, tinh tế và luôn tràn đầy năng lượng sáng tạo.
+            </p>
+            <div class="contact-group">
+                <a href="mailto:luci.tranglinh@gmail.com" style="text-decoration: none;">
+                    <div class="contact-tag">✉️ luci.tranglinh@gmail.com</div>
+                </a>
+                <div class="contact-tag">📘 Facebook: Trang Linh</div>
             </div>
-            <div class="edu-item">
-                <div class="edu-school">Chuyên KHXH&NV - ĐHQGHN</div>
-                <div class="edu-major">K2 Chuyên Địa</div>
+        </header>
+
+        <div class="grid-2-cols fade-in d-2">
+            <div class="card">
+                <h2 class="card-title title-font">🎓 Học Vấn</h2>
+                <div class="edu-item">
+                    <div class="edu-school">Đại học Ngoại Thương (FTU)</div>
+                    <div class="edu-major">K63 Kinh doanh Quốc Tế (CLC)</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-school">Trường THPT Chuyên KHXH&NV</div>
+                    <div class="edu-major">K2 Chuyên Địa</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title title-font">💡 Kỹ Năng & Ngoại Ngữ</h2>
+                
+                <div style="margin-bottom: 15px; font-weight: 700;">Ngoại ngữ:</div>
+                <div class="tag-container" style="margin-bottom: 15px;">
+                    <span class="tag">🇻🇳 Tiếng Việt</span>
+                    <span class="tag">🇬🇧 Tiếng Anh</span>
+                    <span class="tag">🇰🇷 Tiếng Hàn</span>
+                </div>
+                <div class="ielts-highlight">🎯 IELTS 7.0</div>
+
+                <div style="margin-top: 25px; margin-bottom: 15px; font-weight: 700;">Kỹ năng mềm:</div>
+                <div class="tag-container">
+                    <span class="tag">MS Word & Excel</span>
+                    <span class="tag">Teamwork</span>
+                    <span class="tag">Event Planning</span>
+                </div>
             </div>
         </div>
 
-        <div class="card card-exp fade-up d-2">
-            <h2 class="card-title title-font">💼 Thực tập sinh Kinh Doanh | PCS Corp</h2>
-            <ul>
+        <section class="card fade-in d-3">
+            <h2 class="card-title title-font">💼 Kinh Nghiệm Làm Việc</h2>
+            
+            <div class="exp-role">Thực tập sinh phòng Kinh Doanh</div>
+            <div class="exp-company">PCS Corp</div>
+            
+            <ul class="exp-list">
                 <li>Phát triển mạng lưới khách hàng mới qua nhiều kênh (LinkedIn, Facebook, Email Marketing).</li>
                 <li>Phân tích nhu cầu, tối ưu hóa chiến lược tiếp cận và nâng cao trải nghiệm sau mua.</li>
             </ul>
-            <div class="exp-highlight">🔥 Thành tựu: Đánh giá "Rất Tốt" (9/10 điểm).</div>
-        </div>
-
-        <div class="card card-lang fade-up d-3">
-            <h2 class="card-title title-font" style="justify-content: center;">🌍 Ngoại Ngữ</h2>
-            <div class="ielts-score">7.0</div>
-            <div class="lang-text">Thành thạo 3 ngôn ngữ</div>
-            <div class="lang-tags">
-                <span class="lang-tag">🇻🇳 Tiếng Việt</span>
-                <span class="lang-tag">🇬🇧 Tiếng Anh</span>
-                <span class="lang-tag">🇰🇷 Tiếng Hàn</span>
+            
+            <div class="achievement">
+                🏆 Thành tựu: Được Ban Giám Đốc đánh giá "Rất Tốt" (9/10 điểm).
             </div>
-        </div>
+        </section>
 
-        <div class="card card-skill fade-up d-4">
-            <h2 class="card-title title-font">🛠 Kỹ Năng</h2>
-            <ul class="skill-list">
-                <li class="skill-item">💻 MS Word & Excel</li>
-                <li class="skill-item">🤝 Teamwork & Event</li>
-                <li class="skill-item">⚡ Nhanh nhẹn, Tinh tế</li>
-            </ul>
-        </div>
-
-        <div class="card card-activities fade-up d-5">
+        <section class="card fade-in d-4">
             <h2 class="card-title title-font">🎪 Hoạt Động & Sự Kiện</h2>
+            
             <div class="act-grid">
-                <div class="act-box">
-                    <div class="act-title">✨ FTU Forum | Ban Tổ Chức</div>
-                    <div style="font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 8px;">Điều phối sự kiện 2025:</div>
-                    <ul>
+                <div class="act-item">
+                    <div class="act-name">✨ FTU Forum (Ban Tổ Chức)</div>
+                    <div style="font-size: 14px; font-weight: 600; margin-bottom: 5px; color: var(--primary-blue);">Điều phối sự kiện 2025:</div>
+                    <ul class="act-desc">
                         <li>Mùa Gió Ấm lần thứ 16 & Bách Khoa Open Day</li>
-                        <li>Ngày Hội Tuyển Sinh & Webinar Tư Vấn 2025</li>
+                        <li>Ngày Hội Tuyển Sinh & Webinar Tư Vấn</li>
                         <li>FTU Forum's 19th Anniversary - Sonoria</li>
                     </ul>
                 </div>
-                <div class="act-box" style="display: flex; flex-direction: column; gap: 20px;">
-                    <div>
-                        <div class="act-title">🏀 Dự án Ngăn Bàn | Ban Tài Chính</div>
-                        <ul>
-                            <li>Dự án phi lợi nhuận về Sức khỏe - Thể thao.</li>
-                            <li>Tổ chức giải đấu bóng rổ Balling Jam 3x3.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="act-title">⚽ NVFC - HSSH Football Club</div>
-                        <ul>
-                            <li>Vai trò: <strong>Manager</strong> (Quản lý CLB).</li>
-                        </ul>
-                    </div>
+
+                <div class="act-item">
+                    <div class="act-name">🏀 Dự án Ngăn Bàn (Ban Tài Chính)</div>
+                    <ul class="act-desc" style="margin-bottom: 20px;">
+                        <li>Dự án phi lợi nhuận về Sức khỏe - Thể thao.</li>
+                        <li>Tổ chức giải đấu bóng rổ Balling Jam 3x3.</li>
+                    </ul>
+
+                    <div class="act-name" style="margin-top: 15px;">⚽ NVFC - HSSH Football Club</div>
+                    <ul class="act-desc">
+                        <li>Vai trò: Manager (Quản lý Câu lạc bộ).</li>
+                    </ul>
                 </div>
             </div>
+        </section>
+
+        <div class="quote-box fade-in d-4">
+            <div class="quote-text">
+                "A man provided with paper, pencil, and rubber, and subject to strict discipline, is in effect a universal machine."
+            </div>
+            <div class="quote-author">— Alan Turing —</div>
         </div>
 
-    </main>
+        <footer class="footer fade-in d-4">
+            Thiết kế bằng sự tâm huyết 💙 | Nguyễn Trang Linh
+        </footer>
 
-    <div class="quote-container fade-up d-6">
-        <div class="quote-icon">❝</div>
-        <div class="quote-text">
-            A man provided with paper, pencil, and rubber, and subject to strict discipline, is in effect a universal machine.
-        </div>
-        <div class="quote-author">Alan Turing</div>
     </div>
-
-    <footer class="footer fade-up d-6">
-        Made with 💙 by Nguyen Trang Linh
-    </footer>
 
 </body>
 </html>
